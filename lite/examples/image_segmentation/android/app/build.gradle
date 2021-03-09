@@ -22,10 +22,7 @@ android {
     aaptOptions {
         noCompress "tflite"
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
+
     // If you find lint problem like:
     // * What went wrong:
     // A problem was found with the configuration of task ':app:lint'.
