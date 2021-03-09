@@ -61,14 +61,14 @@ dependencies {
 
     // Support Libraries
     implementation 'com.google.guava:guava:28.1-android'
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 
     // TF Lite
-    implementation 'org.tensorflow:tensorflow-lite:0.0.0-nightly-SNAPSHOT'
+    implementation('org.tensorflow:tensorflow-lite:0.0.0-nightly-SNAPSHOT') { changing = true }
 
-    testImplementation 'junit:junit:4.12'
-    testImplementation 'androidx.test:core:1.2.0'
-    testImplementation 'org.robolectric:robolectric:4.3.1'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'androidx.test:core:1.3.0'
+    testImplementation 'org.robolectric:robolectric:4.4'
     // TODO: Include AAR for testing.
 }
