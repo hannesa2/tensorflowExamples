@@ -22,10 +22,6 @@ android {
     }
     // TODO: Add an option to avoid compressing TF Lite model file
 
-    compileOptions {
-        sourceCompatibility = '1.8'
-        targetCompatibility = '1.8'
-    }
     lintOptions {
         abortOnError false
     }
