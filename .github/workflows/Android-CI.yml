@@ -1,0 +1,34 @@
+name: PullRequest
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  build:
+    name: Build ${{ matrix.example }}
+    runs-on: macOS-latest
+    defaults:
+      run:
+        working-directory: lite/examples/${{ matrix.example }}/android
+    strategy:
+      fail-fast: false
+      matrix:
+        java_version: [ 11 ]
+        example: [ audio_classification, gesture_classification, model_personalization, posenet, super_resolution, bert_qa, object_detection, recommendation, text_classification, image_classification, optical_character_recognition, reinforcement_learning, text_searcher, digit_classifier, image_segmentation, pose_estimation, smart_reply, style_transfer, video_classification ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.1.0
+        with:
+          fetch-depth: 0
+      - name: Install JDK ${{ matrix.java_version }}
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'adopt'
+          java-version: ${{ matrix.java_version }}
+      - name: Install Android SDK
+        uses: malinskiy/action-android/install-sdk@release/0.1.4
+      - name: Build project
+        run: ./gradlew assembleDebug
