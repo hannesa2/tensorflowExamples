@@ -47,7 +47,7 @@ Change directory to Folder `android`, and download AAR:
 ```
 cd lite/examples/smart_reply/android  # Your android folder
 
-# Run gradle to download.
+## Run gradle to download.
 ./gradlew :app:downloadAAR :app:downloadLiteModel
 ```
 
@@ -109,7 +109,7 @@ You need to set environment variables ANDROID_HOME and ANDROID_NDK_HOME for
 Android SDK and NDK respectively.
 
 ```
-# Notes: Below is just one example. It depends on YOUR OWN installation.
+## Notes: Below is just one example. It depends on YOUR OWN installation.
 export ANDROID_HOME=$HOME/Android/Sdk
 export ANDROID_NDK_HOME=$HOME/Android/Sdk/ndk/20.0.5594570
 ```
