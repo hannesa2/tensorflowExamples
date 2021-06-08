@@ -191,7 +191,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * getCapturedImage():
      *     Decodes and crops the captured image from camera.
      */
     private fun getCapturedImage(): Bitmap {
@@ -224,18 +223,10 @@ class MainActivity : AppCompatActivity() {
 
         val bitmap = BitmapFactory.decodeFile(currentPhotoPath, bmOptions)
         return when (orientation) {
-            ExifInterface.ORIENTATION_ROTATE_90 -> {
-                rotateImage(bitmap, 90f)
-            }
-            ExifInterface.ORIENTATION_ROTATE_180 -> {
-                rotateImage(bitmap, 180f)
-            }
-            ExifInterface.ORIENTATION_ROTATE_270 -> {
-                rotateImage(bitmap, 270f)
-            }
-            else -> {
-                bitmap
-            }
+            ExifInterface.ORIENTATION_ROTATE_90 -> rotateImage(bitmap, 90f)
+            ExifInterface.ORIENTATION_ROTATE_180 -> rotateImage(bitmap, 180f)
+            ExifInterface.ORIENTATION_ROTATE_270 -> rotateImage(bitmap, 270f)
+            else -> bitmap
         }
     }
 

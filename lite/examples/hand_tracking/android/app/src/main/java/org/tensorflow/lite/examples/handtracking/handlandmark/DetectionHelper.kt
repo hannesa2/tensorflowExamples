@@ -35,10 +35,8 @@ object DetectionHelper {
     ): Double {
         val targetAngle = Math.PI * rotationVectorTargetAngleDegrees / 180f
         val locationData = detection.locationData
-        val x0 =
-            locationData.relativeKeyPoints[rotationVectorStartKeypointIndex].x * width
-        val y0 =
-            locationData.relativeKeyPoints[rotationVectorStartKeypointIndex].y * height
+        val x0 = locationData.relativeKeyPoints[rotationVectorStartKeypointIndex].x * width
+        val y0 = locationData.relativeKeyPoints[rotationVectorStartKeypointIndex].y * height
         val x1 = locationData.relativeKeyPoints[rotationVectorEndKeypointIndex].x * width
         val y1 = locationData.relativeKeyPoints[rotationVectorEndKeypointIndex].y * height
 
@@ -66,14 +64,8 @@ object DetectionHelper {
             normalizedRect.centerX = normalizedRect.centerX + width * shiftX
             normalizedRect.centerY = normalizedRect.centerY + height * shiftY
         } else {
-            val xShift =
-                (imageWidth * width * shiftX * cos(rotation) - imageHeight * height * shiftY * sin(
-                    rotation
-                )) / imageWidth
-            val yShift =
-                (imageWidth * width * shiftX * sin(rotation) + imageHeight * height * shiftY * cos(
-                    rotation
-                )) / imageHeight
+            val xShift = (imageWidth * width * shiftX * cos(rotation) - imageHeight * height * shiftY * sin(rotation)) / imageWidth
+            val yShift = (imageWidth * width * shiftX * sin(rotation) + imageHeight * height * shiftY * cos(rotation)) / imageHeight
             normalizedRect.centerX = normalizedRect.centerX + xShift
             normalizedRect.centerY = normalizedRect.centerY + yShift
         }
