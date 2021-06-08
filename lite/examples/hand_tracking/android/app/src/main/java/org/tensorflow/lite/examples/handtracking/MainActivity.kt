@@ -24,6 +24,14 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.max
 import kotlin.math.min
+import android.graphics.ColorMatrixColorFilter
+
+import android.graphics.ColorMatrix
+
+import android.graphics.Bitmap
+
+
+
 
 class MainActivity : AppCompatActivity() {
     companion object {
@@ -222,12 +230,24 @@ class MainActivity : AppCompatActivity() {
         )
 
         val bitmap = BitmapFactory.decodeFile(currentPhotoPath, bmOptions)
+
         return when (orientation) {
-            ExifInterface.ORIENTATION_ROTATE_90 -> rotateImage(bitmap, 90f)
-            ExifInterface.ORIENTATION_ROTATE_180 -> rotateImage(bitmap, 180f)
-            ExifInterface.ORIENTATION_ROTATE_270 -> rotateImage(bitmap, 270f)
-            else -> bitmap
+            ExifInterface.ORIENTATION_ROTATE_90 -> rotateImage(bitmap.toGrayscale(), 90f)
+            ExifInterface.ORIENTATION_ROTATE_180 -> rotateImage(bitmap.toGrayscale(), 180f)
+            ExifInterface.ORIENTATION_ROTATE_270 -> rotateImage(bitmap.toGrayscale(), 270f)
+            else -> bitmap.toGrayscale()
         }
+    }
+
+    private fun Bitmap.toGrayscale(): Bitmap {
+        val bmpGrayscale = Bitmap.createBitmap(this.width, this.height, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(bmpGrayscale)
+        val paint = Paint()
+        val cm = ColorMatrix()
+        cm.setSaturation(0f)
+        paint.colorFilter = ColorMatrixColorFilter(cm)
+        canvas.drawBitmap(this, 0f, 0f, paint)
+        return bmpGrayscale
     }
 
     private fun rotateImage(source: Bitmap, angle: Float): Bitmap {
